@@ -2,10 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def current_user
-    if session[:current_user].nil?
-      session[:current_user] = User.find_by_ada_id(session[:ada_id])
-    end
-    return session[:current_user]
+    return User.find_by_ada_id(session[:ada_id])
   end
 
   def present_login
@@ -15,11 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def iat_required
+
+    unless current_user.iat?
+      redirect_to iat_url
+    end
     #@todo find a way to abstract this so its not stupid
     user_id  = session[:ada_id]
     count = AdaData.where({gameName: 'FairPlay',user_id: user_id, key: 'IATFinalBias'}).count()
     if count == 0
-      redirect_to iat_url
+     # redirect_to iat_url
     end
   end
 

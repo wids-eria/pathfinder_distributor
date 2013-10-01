@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :player_name, :ada_id, :token
+  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control
 
   before_create :update_control_group
   validates_presence_of :token, :ada_id
@@ -25,11 +25,11 @@ class User < ActiveRecord::Base
   private
 
   def update_control_group
-    if self.control_group.nil?
+    if self.control.nil?
       if rand() < 0.5
-        self.control_group = false
+        self.control = false
       else
-        self.control_group = true
+        self.control = true
       end
     end
 
