@@ -165,7 +165,7 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
             text-transform:uppercase;
         }
 
-    .bias_buttons{ width:100%; float:left;}
+    .bias_buttons{ width:120px;}
         .bias_buttons li{ display:inline; margin:0 0 20px 0; float:left;}
             .bias_buttons li a{
                 width:910px;
@@ -183,7 +183,7 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
 
                 -webkit-transition: all 0.2s ease;
 
-
+                width: 100px;
                 @include rounded(10px);
             }
             .bias_buttons li a:hover{
@@ -377,7 +377,6 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
                 text-transform:uppercase;
 
                 -webkit-transition: all 0.2s ease;
-
 
                 @include rounded(10px);
             }

@@ -22,6 +22,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def iat
+    #@todo find a way to abstract this so its not stupid
+    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'IATFinalBias'}).count()
+    return count==0? false : true
+  end
+
   private
 
   def update_control_group

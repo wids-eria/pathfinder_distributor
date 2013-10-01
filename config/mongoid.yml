@@ -1,6 +1,6 @@
 development:
   host: localhost
-  database: ada_development
+  database: ada_staging
 
 test:
   host: localhost
