@@ -31,13 +31,15 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
     -khtml-border-radius: $radius;
 }
 
+
+
 /* end MIXINS */
 
 /* CLASSES --------------------------------------*/
 
 .clear{ clear: both; }
 .floatleft{ float:left; }
-
+.hidden{ display:none;};
 
 
 /* end CLASSES ----------------------------------*/
@@ -158,60 +160,61 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
 }
 
 
-    .mc_header{ width:100%; text-align:center; float:left;}
-        .mc_header h1{
-            color:#4b433b;
-            font-family: 'Homenaje', sans-serif;
+.mc_header{ width:100%; text-align:center; float:left;}
+    .mc_header h1{
+        color:#4b433b;
+        font-family: 'Homenaje', sans-serif;
+        text-transform:uppercase;
+    }
+
+
+.bias_buttons{ width:140px;}
+    .bias_buttons li{ display:inline; margin:0 0 20px 0; float:left;}
+        .bias_buttons li a{
+            width:910px;
+            background:#fbf9e4;
+            border:4px solid #908074;
+            padding:10px;
+            display:block;
+            font-size:19px;
+
+            text-align:center;
+            color:#908074;
+            text-shadow:0px 1px 1px white;
             text-transform:uppercase;
+            font-family: 'Montserrat', sans-serif;
+
+            -webkit-transition: all 0.2s ease;
+
+            width: 100%;
+            @include rounded(10px);
         }
+        .bias_buttons li a:hover{
+            background:#fdfbeb;
+            border:4px solid #beb4a6;
+            box-shadow:0px 3px 4px #cfc797;
+            color:#cfc3b3;
 
-    .bias_buttons{ width:120px;}
-        .bias_buttons li{ display:inline; margin:0 0 20px 0; float:left;}
-            .bias_buttons li a{
-                width:910px;
-                background:#fbf9e4;
-                border:4px solid #908074;
-                padding:10px;
-                display:block;
-                font-size:19px;
+            -webkit-transition: all 0.2s ease;
 
-                text-align:center;
-                color:#908074;
-                text-shadow:0px 1px 1px white;
-                text-transform:uppercase;
-                font-family: 'Montserrat', sans-serif;
-
-                -webkit-transition: all 0.2s ease;
-
-                width: 100px;
-                @include rounded(10px);
-            }
-            .bias_buttons li a:hover{
-                background:#fdfbeb;
-                border:4px solid #beb4a6;
-                box-shadow:0px 3px 4px #cfc797;
-                color:#cfc3b3;
-
-                -webkit-transition: all 0.2s ease;
-
-            }
-                .bias_buttons li a span{ height:100%; width:100%; display:block; }
-
-
-
-    .example_container{ width:100%; float:left; }
-        .ex_number{
-            float:left;
-            width:160px;
-            margin:0 20px 0 0;
-
-            font-family: 'Homenaje', sans-serif;
-            text-transform:uppercase;
         }
-            .ex_number h1{ color:#908074; padding-top:15%; }
+            .bias_buttons li a span{ height:100%; width:100%; display:block; }
 
-        .example_text{ width:730px; float:right; border-left:1px solid #908074; padding-left:20px; }
-            .example_text p{ color:#4b433b; }
+
+
+.example_container{ width:100%; float:left; }
+    .ex_number{
+        float:left;
+        width:160px;
+        margin:0 20px 0 0;
+
+        font-family: 'Homenaje', sans-serif;
+        text-transform:uppercase;
+    }
+        .ex_number h1{ color:#908074; padding-top:15%; }
+
+    .example_text{ width:730px; float:right; border-left:1px solid #908074; padding-left:20px; }
+        .example_text p{ color:#4b433b; }
 
 
 .AcceptDecline_container { width:100%; float:left; }
@@ -249,11 +252,11 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
 }
 
 
-.button{
+#ss-submit,  .button{
     background:#bc7b4b;
     border:4px solid #4b433b;
     padding:10px;
-    width: 70px;
+    width: 90px;
     display:block;
 
     text-align:center;
@@ -427,7 +430,7 @@ input.SignInButton, input.SignUpButton, input.ResetPasswordButton{ background:#b
     .SignUp_ForgotPassword_container{ margin:10px 0 0 360px; }
 
 .new_user{ margin:0 0 0 360px; }
-label{ color:#4b433b; font-family:georgia; font-size:14px; }
+.ss-q-item-label, label{ color:#4b433b; font-family:georgia; font-size:14px; }
 #user_login, #user_password, #user_password_confirmation{
     float:left;
     padding:10px;
@@ -445,7 +448,8 @@ label{ color:#4b433b; font-family:georgia; font-size:14px; }
 
 .field_with_errors #user_login,
 .field_with_errors #user_password,
-.field_with_errors #user_password_confirmation
+.field_with_errors #user_password_confirmation,
+.error-message
 {
     border:3px solid #e16161;
     float:left;
@@ -457,7 +461,7 @@ label{ color:#4b433b; font-family:georgia; font-size:14px; }
         margin:10px 0 10px 35px;
     }
 
-#error_explanation h4{ font-family: georgia; color:#e16161;}
+.error-message, #error_explanation h4{ font-family: georgia; color:#e16161;}
 
 .error_container{
     width: 610px;
@@ -639,3 +643,34 @@ label{ color:#4b433b; font-family:georgia; font-size:14px; }
   from {-webkit-transform:rotate(0deg);}
   to {-webkit-transform:rotate(360deg);}
 }
+
+/* EXTRA GOOGLE FORM STYLING */
+@mixin border($width: 0px,$color: black) {
+    border: $width solid $color;
+}
+
+.ss-form-question{
+    clear:right;
+    display:block;
+}
+
+
+
+.ss-form{
+    margin: 0 auto;
+    width: 400px;
+}
+
+.ss-q-short{
+    @include border(2px,grey);
+    padding: 3px;
+}
+
+textarea{
+    font-size:14px;
+    padding: 10px;
+    @include rounded(6px);
+    @include border(2px,grey);
+    min-width: 200px;
+}
+

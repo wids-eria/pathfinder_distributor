@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904150615) do
+ActiveRecord::Schema.define(:version => 20131023143720) do
 
   create_table "users", :force => true do |t|
     t.boolean  "control_group"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20130904150615) do
     t.boolean  "consented",     :default => false
     t.string   "player_name"
     t.string   "token"
+    t.boolean  "control",       :default => false
+    t.boolean  "renew_consent", :default => false
+    t.boolean  "survey",        :default => false
+    t.boolean  "renew_survey",  :default => false
   end
 
   add_index "users", ["ada_id"], :name => "index_users_on_ada_id", :unique => true

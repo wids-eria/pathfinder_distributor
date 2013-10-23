@@ -11,13 +11,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def iat_required
-    user_id  = session[:ada_id]
-    unless User.find_by_ada_id(user_id).iat
-      redirect_to iat_url
-    end
-  end
-
   def login_required
     if !current_user
       respond_to do |format|
@@ -31,10 +24,16 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def require_survey
+    unless current_user.survey? && !current_user.renew_survey?
+      redirect_to survey_url
+    end
+  end
   private
 
   def must_consent
-    unless current_user.consented?
+    unless current_user.consented? && !current_user.renew_consent?
       redirect_to consent_form_url
     end
   end

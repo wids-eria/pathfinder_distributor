@@ -14,6 +14,8 @@ gem 'mongoid', '2.6'
 
 gem 'omniauth-oauth2', '1.1.1'
 gem 'omniauth-ada', git: 'git://github.com/wids-eria/omniauth-ada.git'
+
+#gem 'webmock'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

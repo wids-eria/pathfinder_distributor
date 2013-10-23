@@ -4,7 +4,12 @@ PathfinderDistributor::Application.routes.draw do
   get "distributor/index"
   get "consent/form"
   get "game" => "game#player"
-  get 'iat' => "game#iat"
+  get 'iat' => "game#post_iat"
+  get 'complete' => "game#complete"
+  get 'survey' => "distributor#survey"
+
+  get 'postsurvey' => "distributor#postsurvey"
+
   put "consent/consent"
 
   get 'auth/:provider/callback' => 'session#from_oauth'

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control
+  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :renew_consent, :renew_survey, :survey
 
   before_create :update_control_group
   validates_presence_of :token, :ada_id
@@ -22,9 +22,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def iat
+  def pre
     #@todo find a way to abstract this so its not stupid
-    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'IATFinalBias'}).count()
+    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'PreIATFinalBias'}).count()
+    return count==0? false : true
+  end
+
+  def post
+    #@todo find a way to abstract this so its not stupid
+    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'PostIATFinalBias'}).count()
     return count==0? false : true
   end
 

@@ -5,10 +5,9 @@ class ConsentController < ApplicationController
   end
 
   def consent
-    # set
-    # redirect
     @user = current_user
     @user.consented = true
+    @user.renew_consent = false
     @user.save!
     redirect_to root_url
   end

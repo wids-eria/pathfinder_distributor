@@ -1,7 +1,4 @@
-<%= render "unity", game: 'IAT-'+@version %>
-
-<br />
-<br />
+<%= render "unity", game: 'IAT-' + @version %>
 
 <div class="main_content">
   <div class="mc_header">
@@ -19,9 +16,16 @@
 
   <ul class="bias_buttons center">
   <li>
-  <%= link_to game_path do %>
-    <span >Finished</span>
+
+  <% if @version == "A" %>
+    <%= link_to game_path do %>
+      <span >Continue</span>
+    <% end %>
+  <% else %>
+    <%= link_to complete_path do %>
+      <span >Continue</span>
+    <% end %>
   <% end %>
   </li>
-</ul>
+  </ul>
 </div>
