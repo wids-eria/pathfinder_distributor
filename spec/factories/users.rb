@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email)      {|n| "user#{n}#{rand}@example.com" }
-    password "Passw0rd"
     consented false
-
+    survey = false
+    token = "ASD"
     factory :consenting_user do
       consented true
 
@@ -16,27 +15,10 @@ FactoryGirl.define do
       factory :consenting_game_user do
         control_group false
       end
-    end
-  end
 
-  factory :user_no_email, class: User do
-    sequence(:player_name)      {|n| "user#{n}#{rand}" }
-    password "Passw0rd"
-    consented false
-    
-    factory :consenting_user_no_email do
-      consented true
-
-      factory :consenting_control_user_no_email do
-        control_group true
-      end
-
-      factory :consenting_game_user_no_email do
-        control_group false
+      factory :conseting_survey_user do
+        survey = false
       end
     end
-    
-
   end
-  
 end
