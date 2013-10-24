@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def current_user
-    return User.find_by_ada_id(session[:ada_id])
+    unless session[:ada_id].nil?
+      return User.find_by_ada_id(session[:ada_id])
+    else
+      return nil
+    end
   end
 
   def present_login
