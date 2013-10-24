@@ -4,7 +4,8 @@ PathfinderDistributor::Application.routes.draw do
   get "distributor/index"
   get "consent/form"
   get "game" => "game#player"
-  get 'iat' => "game#post_iat"
+  get 'preiat' => "game#pre_iat"
+  get 'postiat' => "game#post_iat"
   get 'complete' => "game#complete"
   get 'survey' => "distributor#survey"
 

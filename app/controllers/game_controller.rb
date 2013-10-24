@@ -1,9 +1,9 @@
 class GameController < ApplicationController
   before_filter :present_login
   before_filter :must_consent
-  #before_filter :require_pre_iat, except: [:pre_iat]
-  #before_filter :require_post_iat, only: [:complete]
   before_filter :require_survey
+  before_filter :require_pre_iat, only: [:player,:post_iat,:complete]
+  #before_filter :require_post_iat, only: [:complete]
 
   def player
     authorize! :read, :game
@@ -36,13 +36,13 @@ class GameController < ApplicationController
 
   def require_pre_iat
     unless current_user.pre
-      redirect_to iat_url
+      redirect_to preiat_url
     end
   end
 
   def require_post_iat
     unless current_user.post
-      redirect_to iat_url
+      redirect_to postiat_url
     end
   end
 

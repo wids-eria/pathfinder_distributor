@@ -23,14 +23,12 @@ class User < ActiveRecord::Base
   end
 
   def pre
-    #@todo find a way to abstract this so its not stupid
-    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'PreIATFinalBias'}).count()
+    count = AdaData.where({gameName: ENV['GameName_Pre'],user_id: self.ada_id, key: ENV['IAT_Flag']}).count()
     return count==0? false : true
   end
 
   def post
-    #@todo find a way to abstract this so its not stupid
-    count = AdaData.where({gameName: 'FairPlay',user_id: self.ada_id, key: 'PostIATFinalBias'}).count()
+    count = AdaData.where({gameName: ENV['GameName_Post'],user_id: self.ada_id, key: ENV['IAT_Flag']}).count()
     return count==0? false : true
   end
 
