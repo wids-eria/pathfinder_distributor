@@ -29,5 +29,4 @@ describe ConsentController do
       user.consented.should eq(true)
     end
   end
-
 end

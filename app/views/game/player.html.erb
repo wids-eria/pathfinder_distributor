@@ -16,11 +16,11 @@
     <ul class="bias_buttons center">
     <li>
     <% if current_user.post %>
-      <%= link_to iat_path do %>
+      <%= link_to postiat_path do %>
         <span >Full Download</span>
       <% end %>
     <% else %>
-      <%= link_to iat_path do %>
+      <%= link_to postiat_path do %>
         <span >Completed</span>
       <% end %>
     <% end %>

@@ -1,23 +1,19 @@
 require 'spec_helper'
 
 describe User do
-  it "randomly assigns control_group to false on create" do
-    user = FactoryGirl.build :user
-    user.should_receive(:rand).and_return(0.49)
-    user.save
-    user.control_group.should be_false
+  let!(:user) { Fabricate :user,consented: true}
+
+  it "pre IAT should be taken" do
+    AdaData.where({gameName: ENV['GameName_Pre'],user_id: user.ada_id, key: ENV['IAT_Flag']}).create
+
+    count = AdaData.where({gameName: ENV['GameName_Pre'],user_id: user.ada_id, key: ENV['IAT_Flag']}).count()
+    count.should eq(1)
   end
 
-  it "randomly assigns control_group to true on create" do
-    user = FactoryGirl.build :user
-    user.should_receive(:rand).and_return(0.5)
-    user.save
-    user.control_group.should be_true
-  end
+  it "post IAT should be taken" do
+    AdaData.where({gameName: ENV['GameName_Post'],user_id: user.ada_id, key: ENV['IAT_Flag']}).create
 
-  it "does not affect control_group on save existing" do
-    user = Factory :user
-    user.should_receive(:rand).never
-    user.save
+    count = AdaData.where({gameName: ENV['GameName_Post'],user_id: user.ada_id, key: ENV['IAT_Flag']}).count()
+    count.should eq(1)
   end
 end
