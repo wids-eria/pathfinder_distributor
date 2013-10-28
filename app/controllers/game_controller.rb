@@ -18,6 +18,7 @@ class GameController < ApplicationController
   def pre_iat
     unless current_user.pre
       @version = 'Pre'
+
       render "iat"
     end
   end
@@ -36,12 +37,20 @@ class GameController < ApplicationController
 
   def require_pre_iat
     unless current_user.pre
+      if request.referer == preiat_url
+        flash[:notice] = "You must complete the IAT before continuing!"
+      end
+
       redirect_to preiat_url
     end
   end
 
   def require_post_iat
     unless current_user.post
+      if request.referer == preiat_url
+        flash[:notice] = "You must complete the IAT before continuing!"
+      end
+
       redirect_to postiat_url
     end
   end

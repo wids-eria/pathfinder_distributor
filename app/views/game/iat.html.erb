@@ -2,7 +2,16 @@
 
 <div class="main_content">
   <div class="mc_header">
-      <h1>Implicit Association Test (IAT)</h1>
+    <h1>Implicit Association Test (IAT)</h1>
+
+    <% if flash[:notice] %>
+      <div class="error_container center">
+        <div class= "error_box center ">
+          <div class="error_img"></div>
+          <span id="notice"><%= flash[:notice] %></span>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <div id="unityPlayer">
@@ -17,7 +26,7 @@
   <ul class="bias_buttons center">
   <li>
 
-  <% if @version == "A" %>
+  <% if @version == "Pre" %>
     <%= link_to game_path do %>
       <span >Continue</span>
     <% end %>
