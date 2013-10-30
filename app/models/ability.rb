@@ -4,9 +4,11 @@ class Ability
   def initialize(user)
     return if user.blank?
 
-    #@todo find out how necessary ability checking is
-    can :read, :game
-
+    if user.control_group?
+      can :read, :control
+    else
+      can :read, :game
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

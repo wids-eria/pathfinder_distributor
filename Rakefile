@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-GlsPortal::Application.load_tasks
+PathfinderDistributor::Application.load_tasks
