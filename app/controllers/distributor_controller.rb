@@ -12,7 +12,7 @@ class DistributorController < ApplicationController
 
   def postsurvey
     id = current_user.id
-    current_user = User.update(id,{survey: true, renew_survey: false})
+    current_user = User.update(id,{survey: Time.now})
 
     redirect_to game_url
   end

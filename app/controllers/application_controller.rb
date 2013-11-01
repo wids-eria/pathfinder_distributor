@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_survey
-    unless current_user.survey? && !current_user.renew_survey?
+    unless current_user.survey >= Survey.last.updated_at
       redirect_to survey_url
     end
   end

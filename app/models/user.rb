@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :renew_consent, :renew_survey, :survey
+  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :renew_consent, :survey
 
   before_create :update_control_group
   validates_presence_of :token, :ada_id
