@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def must_consent
-    unless current_user.consented? && !current_user.renew_consent?
+    unless current_user.consented >= Irb.last.updated_at
       redirect_to consent_form_url
     end
   end

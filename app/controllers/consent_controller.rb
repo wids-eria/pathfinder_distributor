@@ -6,8 +6,7 @@ class ConsentController < ApplicationController
 
   def consent
     @user = current_user
-    @user.consented = true
-    @user.renew_consent = false
+    @user.consented = Time.now
     @user.save!
     redirect_to root_url
   end
