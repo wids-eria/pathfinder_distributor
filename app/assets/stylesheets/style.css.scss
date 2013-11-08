@@ -457,11 +457,20 @@ input.SignInButton, input.SignUpButton, input.ResetPasswordButton{ background:#b
 
 .field_with_errors #user_login,
 .field_with_errors #user_password,
-.field_with_errors #user_password_confirmation,
-.error-message
+.field_with_errors #user_password_confirmation
 {
-    border:3px solid #e16161;
+
+    @include rounded(5px);
+    padding: 5px;
+    font-size: 14px;
+    border:1px solid #e16161;
+    background-color: white;
     float:left;
+    display: block;
+    clear: both;
+    width: auto;
+    height: auto;
+    text-align: center;
 }
 
 .error_list{ list-style:disc; }
@@ -471,6 +480,30 @@ input.SignInButton, input.SignUpButton, input.ResetPasswordButton{ background:#b
     }
 
 .error-message, #error_explanation h4{ font-family: georgia; color:#e16161;}
+
+.error-message{
+
+    display: block;
+}
+
+.error-message {
+    @include rounded(5px);
+    padding: 4px;
+    font-size: 13px;
+    margin: 3px;
+    border:1px solid #e16161;
+    background-color: white;
+    float:left;
+    display: block;
+    clear: both;
+    width: auto;
+    height: auto;
+    text-align: center;
+
+    &:empty{
+        display: none;
+    }
+}
 
 .error_container{
     width: 610px;
@@ -505,22 +538,26 @@ input.SignInButton, input.SignUpButton, input.ResetPasswordButton{ background:#b
 }
 
 #logo{
-    padding: 10px;
+    padding: 120px;
     display:block;
     margin: 0 auto;
+    border: 1px dotted grey;
+
 }
 
 #downloads{
-  width: 900px;
-  ul{
-    width: 200px;
-    height: auto;
-    li{
-        a{ width: auto; }
-        width: 100%;
-        display: block;
+    width: 900px;
+
+    ul{
+        width: 200px;
+        height: auto;
+
+        li{
+            a{ width: auto; }
+            width: 100%;
+            display: block;
+        }
     }
-  }
 }
 
 /* EXTRA GOOGLE FORM STYLING */
@@ -531,17 +568,52 @@ input.SignInButton, input.SignUpButton, input.ResetPasswordButton{ background:#b
 .ss-form-question{
     clear:right;
     display:block;
+    margin: 5px;
 }
 
+.ss-choice-item{
+    font-size: 16px;
+    margin: 3px;
+}
+
+.ss-choice-label{
+    margin-left: 10px;
+}
 
 .ss-form{
     margin: 0 auto;
-    width: 400px;
+    width: auto;
 }
 
 .ss-q-short{
+    @include rounded(3px);
     @include border(2px,grey);
     padding: 3px;
+}
+
+.ss-scalerow, .ss-scalenumbers{
+    padding: 5px;
+    text-align: center;
+}
+
+.ss-form-question{
+    margin-bottom: 15px;
+}
+
+.ss-q-title{
+    font-size: 18px;
+    margin: 2px;
+    letter-spacing: 0.04em;
+}
+
+.ss-leftlabel .aria-only-help{
+    margin-left: -5px;
+}
+
+.required-message{
+    clear: both;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 textarea{
@@ -549,5 +621,6 @@ textarea{
     padding: 10px;
     @include rounded(6px);
     @include border(2px,grey);
-    min-width: 200px;
+    min-width: 350px;
+    font-size: 13px;
 }
