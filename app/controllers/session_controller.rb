@@ -8,6 +8,7 @@ class SessionController < ApplicationController
     unless omniauth.nil?
       session[:token] = omniauth['credentials']['token']
       session[:player_name] = omniauth['extra']['raw_info']['info']['player_name']
+      session[:auth] = omniauth['extra']['raw_info']['info']['auth']
       session[:ada_id] = omniauth['uid']
 
       User.create_from_session(session)

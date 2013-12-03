@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101220035) do
+ActiveRecord::Schema.define(:version => 20131203165122) do
 
   create_table "iats", :force => true do |t|
     t.string   "version"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20131101220035) do
     t.boolean  "control",       :default => false
     t.datetime "survey",        :default => '2013-11-01 21:09:42'
     t.datetime "consented",     :default => '2013-11-01 22:03:01'
+    t.string   "auth_token"
   end
 
   add_index "users", ["ada_id"], :name => "index_users_on_ada_id", :unique => true

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :survey
+  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :survey, :auth_token
 
   before_create :update_control_group
   validates_presence_of :token, :ada_id
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   def self.create_from_session(session)
     unless User.find_by_ada_id(session[:ada_id])
-      return User.create(ada_id: session[:ada_id], player_name: session[:player_name], token: session[:token])
+      return User.create(ada_id: session[:ada_id], player_name: session[:player_name], token: session[:token], auth_token: session[:auth])
     end
   end
 
