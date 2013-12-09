@@ -9,4 +9,15 @@ class DistributorController < ApplicationController
       redirect_to game_url
     end
   end
+
+  def survey
+    @redirect_url = postsurvey_url
+  end
+
+  def postsurvey
+    id = current_user.id
+    current_user = User.update(id,{survey: Time.now})
+
+    redirect_to game_url
+  end
 end

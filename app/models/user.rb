@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :player_name, :password, :password_confirmation, :remember_me, :authentication_token
+
+  attr_accessible :email, :player_name, :ada_id, :token, :iat, :control, :survey, :auth_token
 
   before_create :update_control_group
   before_save :ensure_authentication_token
@@ -22,14 +23,30 @@ class User < ActiveRecord::Base
     where(conditions).where(["lower(player_name) = :login OR lower(email) = :login", login: login.strip.downcase]).first
   end
 
+  def self.create_from_session(session)
+    unless User.find_by_ada_id(session[:ada_id])
+      return User.create(ada_id: session[:ada_id], player_name: session[:player_name], token: session[:token], auth_token: session[:auth])
+    end
+  end
+
+  def pre
+    count = AdaData.where({gameName: ENV['GameName_Pre'],user_id: self.ada_id, key: ENV['IAT_Flag']}).count()
+    return count==0? false : true
+  end
+
+  def post
+    count = AdaData.where({gameName: ENV['GameName_Post'],user_id: self.ada_id, key: ENV['IAT_Flag']}).count()
+    return count==0? false : true
+  end
+
   private
 
   def update_control_group
-    if self.control_group.nil?
+    if self.control.nil?
       if rand() < 0.5
-        self.control_group = false
+        self.control = false
       else
-        self.control_group = true
+        self.control = true
       end
     end
 

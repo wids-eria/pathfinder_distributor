@@ -2,7 +2,7 @@
 <script type="text/javascript" src="http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject.js"></script>
 
 <script type="text/javascript">
-<!--
+
 function GetUnity() {
   if (typeof unityObject != "undefined") {
     return unityObject.getObjectById("unityPlayer");
@@ -14,11 +14,10 @@ if (typeof unityObject != "undefined") {
 }
 
 function GetAuthToken() {
-  GetUnity().SendMessage("ADA", "ListenForToken", <%= current_user.authentication_token.to_json.html_safe %>);
+  GetUnity().SendMessage("ADA", "ListenForToken", <%= current_user.auth_token.to_json.html_safe %>);
 }
 
 function ConsoleAccess(s) {
   console.log(s);
 }
--->
 </script>

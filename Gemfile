@@ -9,6 +9,15 @@ gem 'haml'
 gem 'paperclip'
 gem 'pg'
 
+gem 'httparty'
+gem 'mongoid', '2.6'
+
+gem 'omniauth-oauth2', '1.1.1'
+gem 'omniauth-ada', git: 'git://github.com/wids-eria/omniauth-ada.git'
+
+gem 'figaro'
+
+#gem 'webmock'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -26,6 +35,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'fabrication'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'database_cleaner'
