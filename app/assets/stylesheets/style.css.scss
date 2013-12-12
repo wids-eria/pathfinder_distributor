@@ -275,10 +275,26 @@ p{ color:#4b433b; font-family:georgia; font-size:14px; }
     margin: 0 auto;
 }
 
-.notice{
+#notice{
+    width: 500px;
+    margin-top: 10px;
+    margin: 0 auto;
+    padding: 5px;
+    border:4px solid #D37878;
+    background: #FFFEF9;
+    color: #908074;
+
+    font-size:17px;
+    -webkit-transition: all 0.2s ease;
+    @include rounded(5px);
+    display: block;
     &:empty{
         display:none;
     }
+}
+
+#account{
+    width: 520px;
 }
 
 #ss-submit,  .button{

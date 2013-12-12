@@ -21,8 +21,8 @@
         <span class="orange bold"><%= current_user.player_name %></span>
         <ul class="Logged">
           <li>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-              <span>Log Out</span>
+            <%= link_to main_app.logout_path, :method => :delete do %>
+              <span class="">Log Out</span>
             <% end %>
           </li>
         </ul>

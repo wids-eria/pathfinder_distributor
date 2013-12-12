@@ -1,9 +1,18 @@
 <div class="large_pathfinder_logo"></div>
 
 <hr>
-<div class="notice"><%= flash[:notice]%></div>
+
+<% if flash[:notice] %>
+  <div class="error_container center">
+    <div class= "error_box center ">
+      <div class="error_img"></div>
+      <span id="notice"><%= flash[:notice] %></span>
+    </div>
+  </div>
+<% end %>
 <div class="login_container">
-  <div id="account" class="center">
+  <div id="account">
+      <div class="center">
     <% if user_signed_in? %>
       <span class="orange bold"><%= current_user.player_name %></span>
       <%= link_to main_app.logout_path, :method => :delete do %>
@@ -16,5 +25,6 @@
         <% end %>
       <% end %>
     <% end %>
+  </div>
   </div>
 </div>

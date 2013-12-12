@@ -3,8 +3,8 @@ class GameController < ApplicationController
   before_filter :present_login
   before_filter :must_consent
   before_filter :require_survey
-  #before_filter :require_pre_iat, only: [:player,:post_iat,:complete]
-  #before_filter :require_post_iat, only: [:complete]
+  before_filter :require_pre_iat, only: [:player,:post_iat,:complete]
+  before_filter :require_post_iat, only: [:complete]
 
   def player
     authorize! :read, :game
