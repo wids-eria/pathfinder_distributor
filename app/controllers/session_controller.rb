@@ -25,7 +25,7 @@ class SessionController < ApplicationController
     reset_session
 
     flash[:notice] = %Q[You have been logged out of Fairplay but are still logged into your <a href="http://ada.production.eriainteractive.com">GLS account.</a>].html_safe
-    redirect_to new_user_session_path
+    redirect_to root_url
   end
 
   def failure

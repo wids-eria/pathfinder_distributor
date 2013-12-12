@@ -1,5 +1,5 @@
 class DistributorController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :present_login
   before_filter :must_consent
 
   def index
@@ -12,6 +12,10 @@ class DistributorController < ApplicationController
 
   def survey
     @redirect_url = postsurvey_url
+  end
+
+  def login
+    redirect_to root_url
   end
 
   def postsurvey

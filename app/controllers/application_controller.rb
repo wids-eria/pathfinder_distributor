@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
   private
 
   def must_consent

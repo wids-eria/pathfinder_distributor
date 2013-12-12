@@ -18,7 +18,7 @@
   <% if user_signed_in? %>
     <div class="LoggedInAs">
       <p>Logged in as
-        <span class="orange bold"><%= current_user.email %></span>
+        <span class="orange bold"><%= current_user.player_name %></span>
         <ul class="Logged">
           <li>
             <%= link_to destroy_user_session_path, :method => :delete do %>

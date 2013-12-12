@@ -3,13 +3,18 @@
 <hr>
 
 <div class="login_container">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.text_field :login, placeholder: "Enter Username" %></div>
-
-    <div><%= f.password_field :password, placeholder: "Enter Password" %></div>
-
-    <div><%= f.submit "Sign in", class: "SignInButton" %></div>
-  <% end %>
-
-  <%= render "links" %>
+  <div id="account">
+    <% if user_signed_in? %>
+      <span class="orange bold"><%= current_user.player_name %></span>
+      <%= link_to main_app.logout_path, :method => :delete do %>
+        <span class="small">Log Out</span>
+      <% end %>
+    <% else %>
+      <% if !current_user %>
+        <%= link_to main_app.login_path do %>
+          <span class="small">Sign in</span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
