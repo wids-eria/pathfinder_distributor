@@ -10,7 +10,7 @@ gem 'paperclip'
 gem 'pg'
 
 gem 'httparty'
-gem 'mongoid', '2.6'
+gem 'mongoid'
 
 gem 'omniauth-oauth2', '1.1.1'
 gem 'omniauth-ada', git: 'git://github.com/wids-eria/omniauth-ada.git'

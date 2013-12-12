@@ -248,7 +248,7 @@ DEPENDENCIES
   haml
   httparty
   jquery-rails (~> 2.0.1)
-  mongoid (= 2.6)
+  mongoid
   omniauth-ada!
   omniauth-oauth2 (= 1.1.1)
   paperclip
