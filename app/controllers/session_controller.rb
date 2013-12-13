@@ -1,15 +1,11 @@
 class SessionController < ApplicationController
   skip_authorization_check
-  before_filter :login_required, except: [:from_oauth, :destroy, :create]
+  before_filter :login_required, except: [:from_oauth, :destroy, :create, :create_guest]
 
   def from_oauth
     omniauth = env['omniauth.auth']
 
     unless omniauth.nil?
-
-      puts "@"*20
-      puts omniauth.to_yaml
-
       session[:token] = omniauth['credentials']['token']
       session[:player_name] = omniauth['extra']['raw_info']['info']['player_name']
       session[:auth] = omniauth['extra']['raw_info']['info']['auth']
@@ -63,7 +59,7 @@ class SessionController < ApplicationController
       User.create_from_session(session)
     end
 
-    redirect_to return_path
+    redirect_to root_url
   end
 
 end
