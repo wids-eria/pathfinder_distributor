@@ -3,16 +3,12 @@
 <hr>
 
 <% if flash[:notice] %>
-  <div class="error_container center">
-    <div class= "error_box center ">
-      <div class="error_img"></div>
-      <span id="notice"><%= flash[:notice] %></span>
-    </div>
+  <div id="notice">
+    <%= flash[:notice] %>
   </div>
 <% end %>
 <div class="login_container">
-  <div id="account">
-      <div class="center">
+  <div id="account" class="center">
     <% if user_signed_in? %>
       <span class="orange bold"><%= current_user.player_name %></span>
       <%= link_to main_app.logout_path, :method => :delete do %>
@@ -20,11 +16,9 @@
       <% end %>
     <% else %>
       <% if !current_user %>
-        <%= link_to main_app.login_path do %>
-          <span class="link_button">Sign in</span>
-        <% end %>
+         <%= link_to "Sign in", main_app.login_path, class: "button hover center" %>
+         <%= link_to "Guest", main_app.guest_path, class: "button hover center" %>
       <% end %>
     <% end %>
-  </div>
   </div>
 </div>

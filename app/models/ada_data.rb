@@ -11,6 +11,8 @@ class AdaData
   index({ name: 1 })
   index({ key: 1, schema: 1 })
 
+  attr_readonly :user_id, :gameName, :created_at, :name, :key, :schema
+
   def user=(user)
     self.user_id = user.id
   end

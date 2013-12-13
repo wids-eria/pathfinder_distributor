@@ -1,10 +1,15 @@
 development:
-  host: localhost
-  database: ada_staging
-
+  sessions:
+      default:
+        hosts:
+          - localhost
+        database: ada_staging
 test:
-  host: localhost
-  database: ada_staging
+  sessions:
+      default:
+        hosts:
+          - localhost
+        database: ada_staging
 
 # set these environment variables on your prod server
 production:

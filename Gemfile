@@ -35,7 +35,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara', '~> 2.0.0'
-  gem 'fabrication'
+  gem 'fabrication', '~> 2.7.0'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'database_cleaner'

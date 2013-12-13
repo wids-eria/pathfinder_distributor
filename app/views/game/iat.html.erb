@@ -18,18 +18,15 @@
     </div>
   </div>
 
-  <ul class="bias_buttons center">
-  <li>
-
-  <% if @version == "Pre" %>
-    <%= link_to game_path do %>
-      <span >Continue</span>
+  <div id="player_buttons">
+    <% if @version == "Pre" %>
+      <span class="bias_button">
+        <%= link_to "Continue", game_path %>
+      </span>
+    <% else %>
+      <span class="bias_button">
+        <%= link_to "Continue", complete_path %>
+      </span>
     <% end %>
-  <% else %>
-    <%= link_to complete_path do %>
-      <span >Continue</span>
-    <% end %>
-  <% end %>
-  </li>
-  </ul>
+  </div>
 </div>

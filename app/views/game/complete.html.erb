@@ -1,24 +1,18 @@
 <div class="main_content">
   <div class="mc_header">
-      <h1>Play the Full Game!</h1>
+      <h1>Thanks for Playing!</h1>
   </div>
 
   <div id="downloads" class="abscenter">
 
     <%= image_tag "fairplay.png", id: "logo" ,class: "center" %>
-    <ul class="bias_buttons center">
-      <li>
-        <%= link_to  'assets/full.unity3d' do %>
-          <span>Windows</span>
-        <%end%>
-      </li>
-      <li>
-        <%= link_to  'assets/full.unity3d' do %>
-          <span>Mac</span>
-        <%end%>
-      </li>
-    </ul>
+    <div id="player_buttons">
+      <span class="bias_button">
+        <%= link_to "Windows", 'assets/full.unity3d' %>
+      </span>
+      <span class="bias_button">
+        <%= link_to "Mac", 'assets/full.unity3d' %>
+      </span>
+    </div>
   </div>
-
-
 </div>
