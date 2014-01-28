@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     unless session[:ada_id].nil?
-      return User.where(ada_id: session[:ada_id]).first
+      return User.find_by_ada_id(session[:ada_id])
     else
       return nil
     end

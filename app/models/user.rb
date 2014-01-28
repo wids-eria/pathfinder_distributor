@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   before_create :update_control_group
 
   def self.create_from_session(session)
-    unless User.where(ada_id: session[:ada_id]).first
+    unless User.find_by_ada_id(session[:ada_id])
       return User.create(ada_id: session[:ada_id], player_name: session[:player_name], token: session[:token], auth_token: session[:auth])
     end
   end
