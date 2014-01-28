@@ -1,4 +1,4 @@
-class AddADAIDToUser < ActiveRecord::Migration
+class AddAdaidToUser < ActiveRecord::Migration
   def up
     add_column :users, :ada_id, :integer
   end
