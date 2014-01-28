@@ -5,7 +5,10 @@ class SessionController < ApplicationController
   def from_oauth
     omniauth = env['omniauth.auth']
 
+    puts "-"*20
     unless omniauth.nil?
+      puts session
+      puts omniauth
       session[:token] = omniauth['credentials']['token']
       session[:player_name] = omniauth['extra']['raw_info']['info']['player_name']
       session[:auth] = omniauth['extra']['raw_info']['info']['auth']
@@ -23,12 +26,7 @@ class SessionController < ApplicationController
 
   def destroy
     reset_session
-    puts "-"*30
-    puts flash.to_yaml
-    puts flash
-
     flash[:notice] = %Q[You have been logged out of the Fairplay but are still logged into your <a href="http://ada.production.eriainteractive.com">GLS account.</a>].html_safe
-
     redirect_to new_user_session_url
   end
 
