@@ -5,10 +5,7 @@ class SessionController < ApplicationController
   def from_oauth
     omniauth = env['omniauth.auth']
 
-    puts "-"*20
     unless omniauth.nil?
-      puts session
-      puts omniauth
       session[:token] = omniauth['credentials']['token']
       session[:player_name] = omniauth['extra']['raw_info']['info']['player_name']
       session[:auth] = omniauth['extra']['raw_info']['info']['auth']
